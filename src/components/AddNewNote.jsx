@@ -1,9 +1,9 @@
 import { useState } from "react"
 
-function AddNewNote() {
+function AddNewNote({onAddNote}) {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [notes, setNotes] = useState([])
+
   const handelAddNote = (e) => {
     e.preventDefault();
     const newNote = {
@@ -15,7 +15,7 @@ function AddNewNote() {
     }
     setTitle('')
     setDescription('')
-    setNotes(prevNotes => [...prevNotes, newNote])
+    onAddNote(newNote)
   }
   return (
     <div className="new-note__container">
