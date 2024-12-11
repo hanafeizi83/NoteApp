@@ -1,0 +1,124 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* container in app.jsx */
+.note-main__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.note-list__status {
+    width: 60%;
+}
+
+/* Note Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 2px solid var(--text-300);
+    padding: .5rem 0;
+    margin-bottom: 1rem;
+}
+
+#note-select__box {
+    padding: .5rem .8rem;
+    border-radius: 10px;
+}
+
+#note-select__box option {
+    background-color: var(--text-700);
+    color: var(--white);
+}
+
+/* Add New Note */
+
+.new-note__container {
+    width: 30%;
+}
+
+.new-note__title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.add-note__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-note__input {
+    border-radius: .5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    padding: 0 .5rem;
+}
+
+.add-note__btn {
+    background-color: var(--primary-700);
+    color: var(--white);
+    border-radius: 8px;
+    height: 2.5rem;
+}
+
+/* Note Status */
+.note-status__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.note-status__item span {
+    background-color: var(--text-400);
+    color: var(--white);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
+    padding: 0 2px;
+    margin-left: 5px;
+}
+
+/* Note List */
+.note-item {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-bottom: .5rem;
+}
+
+.note-item__header {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--text-300);
+    padding: .5rem 0;
+}
+
+.note-item__detail h2 {
+    font-size: 1rem;
+}
+
+.note-item__detail p {
+    font-size: .8rem;
+    color: var(--text-400);
+}
+.note-item__action{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 8%;
+}
+.note-item__delete{
+    color: var(--rose-500);
+    cursor: pointer;
+    margin-right: 1rem;
+}
+.note-item__date {
+    font-size: .8rem;
+    color: var(--text-400);
+    font-weight: 700;
+    padding: .5rem 0;
+}
