@@ -7,6 +7,7 @@ import NoteStatus from './components/NoteStatus'
 
 function App() {
   const [notes, setNotes] = useState([])
+  const [sortBy, setSortBy] = useState('latest')
   const handelAddNote = (newNote) => {
     setNotes(prevNotes => [...prevNotes, newNote])
   }
@@ -16,14 +17,16 @@ function App() {
   const handelCompleteNote = (id) => {
     setNotes(prevNotes => prevNotes.map(note => note.id === id ? { ...note, completed: !note.completed } : note))
   }
+
+  
   return (
     <div className='container'>
-      <NoteHeader />
+      <NoteHeader notes={notes} onSort={e => setSortBy(e.target.value)} sortBy={sortBy} />
       <div className="note-main__container">
         <AddNewNote onAddNote={handelAddNote} />
         <div className="note-list__status">
-          <NoteStatus notes={notes}/>
-          <NoteList notes={notes} onDelete={handelDeleteNote} onComplete={handelCompleteNote} />
+          <NoteStatus notes={notes} />
+          <NoteList notes={notes} onDelete={handelDeleteNote} onComplete={handelCompleteNote} sortBy={sortBy} />
         </div>
       </div>
     </div>

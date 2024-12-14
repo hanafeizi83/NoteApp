@@ -1,11 +1,21 @@
 import { TrashIcon } from '@heroicons/react/24/outline'
 
 
-function NoteList({ notes, onDelete, onComplete }) {
+function NoteList({ notes, onDelete, onComplete, sortBy }) {
+  let sortedNotes = notes;
+  if (sortBy === 'latest') {
+    sortedNotes = [...notes].sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
+  }
+  if (sortBy === 'earliest') {
+    sortedNotes = [...notes].sort((a, b) => new Date(a.createAt) - new Date(b.createAt))
+  }
+  if (sortBy === 'completed') {
+    sortedNotes = [...notes].sort((a, b) => Number(a.completed) - Number(b.completed))
+  }
   return (
     <div className="note-list">
       {
-        notes.map(note => (
+        sortedNotes.map(note => (
           <NoteItem note={note} key={note.id} onDelete={onDelete} onComplete={onComplete} />
         ))
       }
