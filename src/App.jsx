@@ -11,10 +11,10 @@ function App() {
     setNotes(prevNotes => [...prevNotes, newNote])
   }
   const handelDeleteNote = (id) => {
-    setNotes(prevNotes => [...prevNotes].filter(note => note.id !== id))
+    setNotes(prevNotes => prevNotes.filter(note => note.id !== id))
   }
   const handelCompleteNote = (id) => {
-    setNotes(prevNotes => [...prevNotes].map(note => note.id === id ? { ...note, completed: !note.completed } : note))
+    setNotes(prevNotes => prevNotes.map(note => note.id === id ? { ...note, completed: !note.completed } : note))
   }
   return (
     <div className='container'>
@@ -22,7 +22,7 @@ function App() {
       <div className="note-main__container">
         <AddNewNote onAddNote={handelAddNote} />
         <div className="note-list__status">
-          <NoteStatus />
+          <NoteStatus notes={notes}/>
           <NoteList notes={notes} onDelete={handelDeleteNote} onComplete={handelCompleteNote} />
         </div>
       </div>

@@ -1,17 +1,20 @@
-function NoteStatus() {
+function NoteStatus({ notes }) {
+  const allNotes = notes.length;
+  const completedNotes = notes.filter(note => note.completed).length;
+  const openNotes = allNotes - completedNotes;
   return (
     <ul className="note-status__container">
       <li className="note-status__item">
         All
-        <span>0</span>
+        <span>{allNotes}</span>
       </li>
       <li className="note-status__item">
         Completed
-        <span>0</span>
+        <span>{completedNotes}</span>
       </li>
       <li className="note-status__item">
         Open
-        <span>0</span>
+        <span>{openNotes}</span>
       </li>
     </ul>
   )

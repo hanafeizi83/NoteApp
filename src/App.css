@@ -70,15 +70,24 @@
     justify-content: space-between;
     margin-bottom: 1rem;
 }
-
+.note-status__item{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
 .note-status__item span {
     background-color: var(--text-400);
     color: var(--white);
-    width: 2rem;
-    height: 2rem;
-    border-radius: 8px;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 15px;
     padding: 0 2px;
     margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
 }
 
 /* Note List */
