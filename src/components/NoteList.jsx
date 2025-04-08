@@ -1,7 +1,9 @@
 import { TrashIcon } from '@heroicons/react/24/outline'
+import { useNotes, useNotesDispatch } from '../context/NotesContext';
 
 
-function NoteList({ notes, onDelete, onComplete, sortBy }) {
+function NoteList({ sortBy }) {
+  const notes = useNotes()
   let sortedNotes = notes;
   if (sortBy === 'latest') {
     sortedNotes = [...notes].sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
@@ -16,7 +18,7 @@ function NoteList({ notes, onDelete, onComplete, sortBy }) {
     <div className="note-list">
       {
         sortedNotes.map(note => (
-          <NoteItem note={note} key={note.id} onDelete={onDelete} onComplete={onComplete} />
+          <NoteItem note={note} key={note.id} />
         ))
       }
 
@@ -26,7 +28,8 @@ function NoteList({ notes, onDelete, onComplete, sortBy }) {
 
 export default NoteList
 
-function NoteItem({ note, onDelete, onComplete }) {
+function NoteItem({ note }) {
+  const dispatch = useNotesDispatch()
   const options = {
     "year": 'numeric',
     'month': 'short',
@@ -39,8 +42,8 @@ function NoteItem({ note, onDelete, onComplete }) {
         <p>{note.description} </p>
       </div>
       <div className="note-item__action">
-        <TrashIcon className='note-item__delete' onClick={(e) => onDelete(note.id)} />
-        <input type="checkbox" onChange={(e) => onComplete(note.id)} />
+        <TrashIcon className='note-item__delete' onClick={(e) => dispatch({ type: 'deleteNote', payload: note.id })} />
+        <input type="checkbox" onChange={(e) => dispatch({ type: 'completeNote', payload: note.id })} />
       </div>
     </div>
     <div className="note-item__footer">
