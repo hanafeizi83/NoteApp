@@ -91,6 +91,11 @@
 }
 
 /* Note List */
+.completed h2{
+    text-decoration: line-through;
+    opacity: .6;
+}
+
 .note-item {
     background-color: var(--white);
     border-radius: 10px;

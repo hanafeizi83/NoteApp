@@ -35,7 +35,7 @@ function NoteItem({ note }) {
     'month': 'short',
     'day': 'numeric'
   };
-  return <div className="note-item">
+  return <div className={`note-item ${note.completed ? 'completed' : ''}`} data-testid='note-item'>
     <div className="note-item__header">
       <div className="note-item__detail">
         <h2>{note.title}</h2>

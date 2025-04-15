@@ -5,6 +5,8 @@ import NoteHeader from './components/NoteHeader'
 import NoteList from './components/NoteList'
 import NoteStatus from './components/NoteStatus'
 import NotesProvider from './context/NotesContext'
+import NoteApp from './components/NoteApp'
+import AppProviders from './providers/AppProviders'
 
 function App() {
   const [sortBy, setSortBy] = useState('latest')
@@ -21,18 +23,12 @@ function App() {
 
 
   return (
-    <NotesProvider>
+    <AppProviders>
       <div className='container'>
         <NoteHeader onSort={e => setSortBy(e.target.value)} sortBy={sortBy} />
-        <div className="note-main__container">
-          <AddNewNote />
-          <div className="note-list__status">
-            <NoteStatus />
-            <NoteList sortBy={sortBy} />
-          </div>
-        </div>
+        <NoteApp sortBy={sortBy} />
       </div>
-    </NotesProvider>
+    </AppProviders>
   )
 }
 
